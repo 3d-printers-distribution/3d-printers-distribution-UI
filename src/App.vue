@@ -5,12 +5,11 @@
       flat
     >
       <v-toolbar-title>3D2MEDS</v-toolbar-title>
-      <span>token:{{ user }}</span>
       <v-spacer></v-spacer>
       <v-btn text :to="{name: 'Home'}">Home</v-btn>
       <v-btn text :to="{name: 'Contact'}">Contact</v-btn>
       <v-btn text :to="{name: 'About'}">About</v-btn>
-      <v-btn text v-if="login"> Logout</v-btn>
+      <v-btn text v-if="login">Logout</v-btn>
       <v-btn
         text
         v-else
@@ -25,7 +24,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 
 export default {
   name: 'App',
@@ -33,9 +31,6 @@ export default {
     return {
       login: false,
     };
-  },
-  computed: {
-    ...mapState(['user']),
   },
 };
 
