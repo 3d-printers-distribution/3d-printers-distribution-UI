@@ -12,17 +12,22 @@ const routes = [
     component: Home,
   },
   {
-    path: 'onboarding',
+    path: '/onboarding',
     name: 'Onboarding',
     component: () => import('../views/Onboarding.vue'),
   },
   {
-    path: 'contact',
+    path: '/contact',
     name: 'Contact',
     component: () => import('../views/Contact.vue'),
   },
   {
-    path: 'about',
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue'),
+  },
+  {
+    path: '/about',
     name: 'About',
     component: () => import('../views/About.vue'),
   },
