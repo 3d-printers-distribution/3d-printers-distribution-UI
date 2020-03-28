@@ -2,6 +2,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
 if (process.env.NODE_ENV === 'development') {
+  console.log(process.env.FB_API_KEY)
   const fbDevelopmentConfig = {
     apiKey: process.env.FB_API_KEY,
     authDomain: 'd-printing-dev.firebaseapp.com',
@@ -19,3 +20,5 @@ if (process.env.NODE_ENV === 'development') {
     firebase.initializeApp(await response.json());
   });
 }
+
+export default firebase;

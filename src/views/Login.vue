@@ -165,14 +165,13 @@ export default {
     login() {
       if (this.$refs.loginForm.validate()) {
         this.loading = true;
-        firebase.auth.signInWithEmailAndPassword(
+        firebase.auth().signInWithEmailAndPassword(
           this.loginForm.email.field,
           this.loginForm.password.field,
         ).then((user) => {
           this.loading = false;
           this.error = null;
-          this.$store.commit('setCurrentUser', user.user);
-          this.$store.dispatch('fetchUserProfile');
+          this.$store.commit('setUser', user.user);
           this.$router.push('/dashboard');
         }).catch((err) => {
           this.loading = false;
@@ -186,7 +185,7 @@ export default {
     resetPassword() {
       if (this.$refs.passwordResetForm.validate()) {
         this.loading = true;
-        firebase.auth.sendPasswordResetEmail(
+        firebase.auth().sendPasswordResetEmail(
           this.passwordResetForm.email.field,
         ).then(() => {
           this.loading = false;
