@@ -5,7 +5,7 @@
 yarn install
 ```
 
-Add environment variable `FB_API_KEY` with the Api Key for Firebase.
+Add environment variable `VUA_APP_FB_API_KEY` with the Api Key for Firebase.
 
 ### Compiles and hot-reloads for development
 ```
