@@ -14,25 +14,10 @@
           <v-col
             cols="12"
             md="auto"
+            v-for="cta in callToActions" :key="cta.title"
           >
-            <v-btn dark class="grey darken-2 text-uppercase">I have a 3d printer</v-btn>
-          </v-col>
-          <v-col
-            cols="12"
-            md="auto"
-          >
-            <v-btn dark class="grey darken-2 text-uppercase">I need masks</v-btn>
-          </v-col>
-          <v-col
-            cols="12"
-            md="auto"
-          >
-            <v-btn dark class="grey darken-2 text-uppercase">I can deliver masks</v-btn>
-          </v-col>
-          <v-col
-            cols="12"
-            md="auto"
-          >
+            <v-btn dark class="grey darken-2 text-uppercase">
+              {{ cta.title }}</v-btn>
           </v-col>
         </v-row>
       </v-col>
@@ -43,5 +28,14 @@
 <script>
 export default {
   name: 'Home',
+  data() {
+    return {
+      callToActions: [
+        { title: 'I have a 3d printer', target: 'Signup_supplier' },
+        { title: 'I need masks', target: 'Signup_demand' },
+        { title: 'I can deliver masks', target: 'Signup_distributor' },
+      ],
+    };
+  },
 };
 </script>
