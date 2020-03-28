@@ -3,7 +3,7 @@ import 'firebase/auth';
 
 if (process.env.NODE_ENV === 'development') {
   const fbDevelopmentConfig = {
-    apiKey: 'AIzaSyASv70cPSrXiS796HT1_P96xOvaOwpeMzY',
+    apiKey: process.env.VUE_APP_FB_API_KEY,
     authDomain: 'd-printing-dev.firebaseapp.com',
     databaseURL: 'https://d-printing-dev.firebaseio.com',
     projectId: 'd-printing-dev',
@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === 'development') {
     messagingSenderId: '66781649147',
     appId: '1:66781649147:web:eb17f370afda06fd8ab85e',
   };
+  console.log(fbDevelopmentConfig);
 
   firebase.initializeApp(fbDevelopmentConfig);
 } else {
@@ -19,3 +20,5 @@ if (process.env.NODE_ENV === 'development') {
     firebase.initializeApp(await response.json());
   });
 }
+
+export default firebase;
