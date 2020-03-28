@@ -18,15 +18,19 @@
     </v-app-bar>
 
     <v-content>
+      <span>token: {{userToken}}</span>
       <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'App',
   computed: {
+    ...mapState(['userToken']),
     userIsLoggedIn() {
       return !!this.$store.state.user;
     },
