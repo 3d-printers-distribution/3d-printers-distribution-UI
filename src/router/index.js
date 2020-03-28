@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import { loadLocale } from '../plugins/i18n';
 
 import Home from '../views/Home.vue';
+import About from '../views/About.vue';
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,11 @@ const routes = [{
       path: 'onboarding',
       name: 'Onboarding',
       component: () => import('../views/Onboarding.vue'),
+    },
+    {
+      path: 'about',
+      name: 'about',
+      component: About,
     },
   ],
 }];

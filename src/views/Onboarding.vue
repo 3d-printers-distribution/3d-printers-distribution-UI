@@ -2,7 +2,7 @@
   <v-container
     fluid
   >
-    Hallo Onboarding!
+    Hello Onboarding!
   </v-container>
 </template>
 
