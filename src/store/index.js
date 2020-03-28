@@ -14,6 +14,13 @@ const store = new Vuex.Store({
     setUserToken(state, payload) { state.userToken = payload; },
   },
   actions: {
+    signOut({ commit }) {
+      firebase.auth().signOut()
+        .then(() => {
+          commit('setUser', null);
+          commit('setUserToken', null);
+        });
+    },
   },
   modules: {
   },

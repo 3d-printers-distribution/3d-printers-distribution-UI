@@ -9,7 +9,7 @@
       <v-btn text :to="{name: 'Home'}">Home</v-btn>
       <v-btn text :to="{name: 'Contact'}">Contact</v-btn>
       <v-btn text :to="{name: 'About'}">About</v-btn>
-      <v-btn text v-if="login">Logout</v-btn>
+      <v-btn text v-if="userIsLoggedIn" @click="logoutPlease">Logout</v-btn>
       <v-btn
         text
         v-else
@@ -24,13 +24,17 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
-  data() {
-    return {
-      login: false,
-    };
+  computed: {
+    userIsLoggedIn() {
+      return !!this.$store.state.user;
+    },
+  },
+  methods: {
+    logoutPlease() {
+      this.$store.dispatch('signOut');
+    },
   },
 };
 
