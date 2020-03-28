@@ -3,7 +3,7 @@
     fluid
     class="Contact"
   >
-    Here will be the page with contact information
+    Here will be the page with contact details.
   </v-container>
 </template>
 

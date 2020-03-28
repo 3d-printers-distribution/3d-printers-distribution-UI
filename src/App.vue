@@ -4,7 +4,7 @@
       app
       flat
     >
-      <v-toolbar-title>3D2MEDS</v-toolbar-title>
+      <v-toolbar-title>3DtoMeds</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text :to="{name: 'Home'}">Home</v-btn>
       <v-btn text :to="{name: 'Contact'}">Contact</v-btn>
