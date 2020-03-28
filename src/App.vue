@@ -9,23 +9,36 @@
       <v-btn text :to="{name: 'Home'}">Home</v-btn>
       <v-btn text :to="{name: 'Contact'}">Contact</v-btn>
       <v-btn text :to="{name: 'About'}">About</v-btn>
-      <v-btn text v-if="login"> Logout</v-btn>
-      <v-btn text v-else> Login</v-btn>
+      <v-btn text v-if="userIsLoggedIn" @click="logoutPlease">Logout</v-btn>
+      <v-btn
+        text
+        v-else
+        :to="{name: 'Login'}"
+      >Login</v-btn>
     </v-app-bar>
 
     <v-content>
+      <span>token: {{userToken}}</span>
       <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'App',
-  data() {
-    return {
-      login: false,
-    };
+  computed: {
+    ...mapState(['userToken']),
+    userIsLoggedIn() {
+      return !!this.$store.state.user;
+    },
+  },
+  methods: {
+    logoutPlease() {
+      this.$store.dispatch('signOut');
+    },
   },
 };
 

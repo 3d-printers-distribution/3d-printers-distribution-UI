@@ -1,1 +1,15 @@
-{}
+{
+  "login": {
+    "inactiveTitle": "Account deactivated",
+    "inactive": "This account has been deactivated. Please contact an administrator.",
+    "form": {
+      "emailLabel": "Mail",
+      "passwordLabel": "Password",
+      "loginBtnLabel": "Login",
+      "resetPasswordBtnLabel": "Reset password"
+    },
+    "forgotPassword": "Forgot password",
+    "backToLogin": "Back to Login",
+    "passwordResetSuccess": "We have sent you a mail to reset your password."
+  }
+}
