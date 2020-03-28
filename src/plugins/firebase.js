@@ -3,7 +3,7 @@ import 'firebase/auth';
 
 if (process.env.NODE_ENV === 'development') {
   const fbDevelopmentConfig = {
-    apiKey: process.env.FB_API_KEY,
+    apiKey: process.env.VUE_APP_FB_API_KEY,
     authDomain: 'd-printing-dev.firebaseapp.com',
     databaseURL: 'https://d-printing-dev.firebaseio.com',
     projectId: 'd-printing-dev',
