@@ -3,7 +3,7 @@
     fluid
     class="home"
   >
-    Hello World!
+    content
   </v-container>
 </template>
 
