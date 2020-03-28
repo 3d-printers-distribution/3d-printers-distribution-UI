@@ -24,7 +24,7 @@ export const loadLocale = (lang) => {
   if (i18n.locale !== lang) {
     if (!loadedLocales.includes(lang)) {
       return import(/* webpackChunkName: "lang-[request]" */ `@/lang/${lang}.json`)
-        .then(messages => {
+        .then((messages) => {
           i18n.setLocaleMessage(lang, messages.default);
           loadedLocales.push(lang);
           return setLocale(lang);
