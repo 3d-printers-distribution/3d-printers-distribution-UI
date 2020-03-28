@@ -1,11 +1,14 @@
 <template>
-  <div class="home">
+  <v-container
+    fluid
+    class="home"
+  >
     Hello World!
-  </div>
+  </v-container>
 </template>
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
 };
 </script>
