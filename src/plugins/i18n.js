@@ -10,7 +10,7 @@ const loadedLocales = [defaultLocale]; // our default language that is preloaded
 const i18n = new VueI18n({
   locale: defaultLocale, // set locale
   fallbackLocale: defaultLocale,
-  messages: { [defaultLocale]: defaultMessages }
+  messages: { [defaultLocale]: defaultMessages },
 });
 export default i18n;
 
