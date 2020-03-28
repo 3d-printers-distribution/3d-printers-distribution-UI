@@ -2,10 +2,15 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
-      dark
+      flat
     >
-      <v-toolbar-title>3D Printers Distribution</v-toolbar-title>
+      <v-toolbar-title>3D2MEDS</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn text :to="{name: 'Home'}">Home</v-btn>
+      <v-btn text :to="{name: 'Contact'}">Contact</v-btn>
+      <v-btn text :to="{name: 'About'}">About</v-btn>
+      <v-btn text v-if="login"> Logout</v-btn>
+      <v-btn text v-else> Login</v-btn>
     </v-app-bar>
 
     <v-content>
@@ -17,5 +22,11 @@
 <script>
 export default {
   name: 'App',
+  data() {
+    return {
+      login: false,
+    };
+  },
 };
+
 </script>

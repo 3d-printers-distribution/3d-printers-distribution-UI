@@ -3,7 +3,6 @@ import VueRouter from 'vue-router';
 import { loadLocale } from '../plugins/i18n';
 
 import Home from '../views/Home.vue';
-import About from '../views/About.vue';
 
 Vue.use(VueRouter);
 
@@ -22,9 +21,14 @@ const routes = [{
       component: () => import('../views/Onboarding.vue'),
     },
     {
+      path: 'contact',
+      name: 'Contact',
+      component: () => import('../views/Contact.vue'),
+    },
+    {
       path: 'about',
-      name: 'about',
-      component: About,
+      name: 'About',
+      component: () => import('../views/About.vue'),
     },
   ],
 }];
