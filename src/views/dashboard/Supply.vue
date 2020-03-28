@@ -1,7 +1,7 @@
 <template>
-  <v-card>
-    Supply
-  </v-card>
+  <v-col>
+    <span class="title">Supply</span>
+  </v-col>
 </template>
 
 <script>
