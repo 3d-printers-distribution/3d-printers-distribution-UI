@@ -48,13 +48,15 @@ function getRequester(id) {
 
 /**
  * READ ALL requesters
+ * @param {LatLng} location
  * @param {number} rangeKm
  * @returns {Promise<AxiosResponse<T>>}
  *
  * response body: {id, name, latLng, quantity}[]
  */
-function getRequesters(rangeKm = defaults.rangeKm) {
+function getRequesters(location, rangeKm = defaults.rangeKm) {
   const params = {
+    location,
     range: rangeKm,
   };
 

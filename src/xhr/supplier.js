@@ -48,13 +48,15 @@ function getSupplier(id) {
 
 /**
  * READ ALL suppliers
+ * @param {LatLng} location
  * @param {number} rangeKm
  * @returns {Promise<AxiosResponse<T>>}
  *
  * response body: {id, name, latLng, quantity}[]
  */
-function getSuppliers(rangeKm = defaults.rangeKm) {
+function getSuppliers(location, rangeKm = defaults.rangeKm) {
   const params = {
+    location,
     range: rangeKm,
   };
 
