@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import firebase from '../plugins/firebase';
 
 import Home from '../views/Home.vue';
 
@@ -24,7 +25,17 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue'),
+    component: () => import('../views/login/Login.vue'),
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: () => import('../views/login/SignUp.vue'),
+  },
+  {
+    path: '/forgot-password',
+    name: 'ForgotPassword',
+    component: () => import('../views/login/ForgotPassword.vue'),
   },
   {
     path: '/about',
@@ -35,6 +46,9 @@ const routes = [
     path: '/dashboard',
     name: 'dashboard',
     component: () => import('../views/dashboard/Dashboard.vue'),
+    meta: {
+      requiresAuth: true,
+    },
     children: [
       {
         path: 'supply',
@@ -59,6 +73,19 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
+  const { currentUser } = firebase.auth();
+
+  if (requiresAuth && !currentUser) {
+    next({ name: 'Login' });
+  } else if (to.name === 'Login' && currentUser) {
+    next('/dashboard');
+  } else {
+    next();
+  }
 });
 
 export default router;
