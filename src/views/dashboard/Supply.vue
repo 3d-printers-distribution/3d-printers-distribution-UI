@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import SupplyTable from '../../components/SupplyTable.vue';
 
 export default {
