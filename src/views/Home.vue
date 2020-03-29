@@ -4,7 +4,7 @@
     class="home grey pa-md-12"
   >
     <v-row>
-      <img src="../assets/images/virus-outline-2.svg" alt="">
+      <img src="../assets/images/virus-outline-2.svg" alt="logo">
       <v-col
         align-self="center"
         class="pa-8 ma-8"

@@ -12,7 +12,11 @@
         <v-card class="text-center ma-3">
           <v-responsive class="pt-4">
             <v-avatar size="200" class="grey lighten-2">
-              <v-icon size="200">mdi-account-circle</v-icon>
+              <v-img
+                v-if="person.picture"
+                :src="person.picture"
+                alt="profile picture"></v-img>
+              <v-icon v-else size="200">mdi-account-circle</v-icon>
             </v-avatar>
           </v-responsive>
           <v-card-text>
@@ -92,51 +96,60 @@ export default {
           role: 'Front End Developer',
           linkedin: 'https://www.linkedin.com/in/andreas-ambuehl',
           github: 'https://github.com/AndiSwiss',
+          picture: '/pics/profile_andreas_ambuehl.jpg',
         },
         {
           name: 'Apostolos Staridis',
           role: 'QA & Marketing',
           linkedin: 'https://www.linkedin.com/in/aposstar1994',
+          picture: '/pics/profile_apos_staridis.jpg',
         },
         {
           name: 'Dario Breitenstein',
           role: 'Front End Developer',
           linkedin: 'https://www.linkedin.com/in/dario-breitenstein-397873a6',
           github: 'https://github.com/chdabre',
+          picture: '/pics/profile_dario_breitenstein.jpg',
         },
         {
           name: 'Florent Bardy',
           role: 'Product Design & Marketing',
           linkedin: 'https://www.linkedin.com/in/florent-bardy-345263a',
           github: 'https://github.com/Flobar42',
+          picture: '/pics/profile_florent_bardy.jpg',
         },
         {
           name: 'Hanna Lisa Franz',
           role: 'Front End Developer',
           github: 'https://github.com/nightbehaviour',
+          picture: '/pics/profile_hanna_lisa_franz.jpg',
         },
         {
           name: 'Hussein Duvigneau',
           role: 'Front End Developer',
           linkedin: 'https://www.linkedin.com/in/husseinduvigneau',
           website: 'https://notmybase.com',
+          picture: '/pics/profile_hussein_duvigneau.jpg',
         },
         {
           name: 'Luca Fluri',
           role: 'Front End Developer',
           linkedin: 'https://www.linkedin.com/in/luca-fluri-9a7286172',
           github: 'https://github.com/lucafluri',
+          picture: '/pics/profile_luca_fluri.jpg',
         },
         {
           name: 'Manuel Ramirez Lopez',
           role: 'DevOps',
           linkedin: 'https://www.linkedin.com/in/manuel-ramirez-lopez',
           github: 'https://github.com/chumbo4',
+          picture: '/pics/profile_manuel_ramirez_lopez.jpg',
         },
         {
           name: 'Paschalis Dimitriou',
           role: 'Project Leader',
           linkedin: 'https://www.linkedin.com/in/paschalis-dimitriou-57786a61',
+          picture: '/pics/profile_paschalis_dimitriou.jpg',
         },
         {
           name: 'Sebastian Markgraf',
