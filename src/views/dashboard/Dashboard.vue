@@ -31,6 +31,8 @@
             :demandTablePrefs="demandTablePrefs"
             :supplyTablePrefs="supplyTablePrefs"
             :handleSortBy="handleSortBy"
+            :supplyResults="supplyResults"
+            :demandResults="demandResults"
           />
         </v-slide-x-transition>
       </v-col>
