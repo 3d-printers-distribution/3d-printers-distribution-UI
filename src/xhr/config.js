@@ -1,5 +1,5 @@
 // TODO should probably be an env var
-export const endpointBase = 'https://api.3dtomed.com';
+export const apiBaseUrl = 'http://api.3dtomeds.com/v1';
 
 export const defaults = {
   rangeKm: 100,
