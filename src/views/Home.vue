@@ -9,7 +9,7 @@
         align-self="center"
         class="pa-8 ma-8"
       >
-        <h2 class="headline pb-2">Quickly distribute 3D-Printed Masks to where they are needed!</h2>
+        <h2 class="headline pb-2">Empowering the 3D printing community to fight COVID-19!</h2>
         <v-row align="stretch">
           <v-col
             cols="12"
