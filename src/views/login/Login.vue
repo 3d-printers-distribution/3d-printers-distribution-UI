@@ -55,8 +55,8 @@
         </v-btn>
       </v-form>
       <v-row class="px-4 justify-space-between mt-4 login-links">
-        <router-link :to="{ name: 'Signup' }">Sign up</router-link>
-        <router-link :to="{ name: 'ForgotPassword' }">Forgot Password</router-link>
+        <router-link :to="{ name: 'signup' }">Sign up</router-link>
+        <router-link :to="{ name: 'forgot-password' }">Forgot Password</router-link>
       </v-row>
     </v-container>
   </login-container>

@@ -11,7 +11,6 @@ if (process.env.NODE_ENV === 'development') {
     messagingSenderId: '66781649147',
     appId: '1:66781649147:web:eb17f370afda06fd8ab85e',
   };
-  console.log(fbDevelopmentConfig);
 
   firebase.initializeApp(fbDevelopmentConfig);
 } else {
