@@ -5,7 +5,7 @@
   >
     <h1 class="title">The team behind this application</h1>
     <div class="subtitle-1 my-3">
-      We started this work in the <a href="https://www.codevscovid19.org/">#CodeVsCOVID19</a>
+      We started this work in the <a href="https://www.codevscovid19.org/" target="_blank">#CodeVsCOVID19</a>
       - Hackathon.</div>
     <v-layout row wrap>
       <v-flex xs12 sm6 md4 lg3 v-for="person in team" :key="person.name">
