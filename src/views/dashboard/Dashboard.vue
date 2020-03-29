@@ -56,8 +56,7 @@ export default {
           break;
         }
         default: {
-          console.warn('error');
-        }
+          break; }
       }
     },
   },
