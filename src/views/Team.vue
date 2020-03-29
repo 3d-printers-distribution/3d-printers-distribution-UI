@@ -5,7 +5,7 @@
   >
     <h1 class="title">The team behind this application</h1>
     <div class="subtitle-1 my-3">
-      We started this work in the <a href="https://www.codevscovid19.org/">#CodeVsCOVID19</a>
+      We started this work in the <a href="https://www.codevscovid19.org/" target="_blank">#CodeVsCOVID19</a>
       - Hackathon.</div>
     <v-layout row wrap>
       <v-flex xs12 sm6 md4 lg3 v-for="person in team" :key="person.name">
@@ -30,7 +30,8 @@
                            large :href="person.linkedin"
                            target="_blank"
                            v-on="on"
-                           class="mx-2"
+                           class="mx-2 mb-2"
+                           fab
                     >
                       <v-icon large>mdi-linkedin</v-icon>
                     </v-btn>
@@ -43,7 +44,8 @@
                            large :href="person.github"
                            target="_blank"
                            v-on="on"
-                           class="mx-2"
+                           class="mx-2 mb-2"
+                           fab
                     >
                       <v-icon large>mdi-github</v-icon>
                     </v-btn>
@@ -56,7 +58,8 @@
                            large :href="person.website"
                            target="_blank"
                            v-on="on"
-                           class="mx-2"
+                           class="mx-2 mb-2"
+                           fab
                     >
                       <v-icon large>mdi-link-box-variant</v-icon>
                     </v-btn>
@@ -90,6 +93,7 @@ export default {
           role: 'Backend Developer',
           linkedin: 'https://www.linkedin.com/in/adrian-lehmann',
           github: 'https://github.com/adrianleh',
+          picture: '/pics/profile_adrian_lehmann.jpg',
         },
         {
           name: 'Andreas Ambühl',
@@ -156,6 +160,7 @@ export default {
           role: 'Backend Developer',
           linkedin: 'https://www.linkedin.com/in/sebastian-markgraf-85726a182/',
           github: 'https://github.com/sebimarkgraf',
+          picture: '/pics/profile_sebastian_markgraf.jpg',
         },
       ],
     };
