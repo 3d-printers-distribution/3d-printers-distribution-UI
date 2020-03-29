@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import store from '../store/index';
 
 import Home from '../views/Home.vue';
 
@@ -8,33 +9,46 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home,
   },
   {
     path: '/onboarding',
-    name: 'Onboarding',
+    name: 'onboarding',
     component: () => import('../views/Onboarding.vue'),
   },
   {
     path: '/contact',
-    name: 'Contact',
+    name: 'contact',
     component: () => import('../views/Contact.vue'),
   },
   {
     path: '/login',
-    name: 'Login',
-    component: () => import('../views/Login.vue'),
+    name: 'login',
+    component: () => import('../views/login/Login.vue'),
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: () => import('../views/login/SignUp.vue'),
+  },
+  {
+    path: '/forgot-password',
+    name: 'forgot-password',
+    component: () => import('../views/login/ForgotPassword.vue'),
   },
   {
     path: '/about',
-    name: 'About',
+    name: 'about',
     component: () => import('../views/About.vue'),
   },
   {
     path: '/dashboard',
     name: 'dashboard',
     component: () => import('../views/dashboard/Dashboard.vue'),
+    meta: {
+      requiresAuth: true,
+    },
     children: [
       {
         path: 'supply',
@@ -59,6 +73,19 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
+  const { user } = store.state;
+
+  if (requiresAuth && !user) {
+    next({ name: 'login' });
+  } else if (to.name === 'login' && user) {
+    next({ name: 'dashboard' });
+  } else {
+    next();
+  }
 });
 
 export default router;
