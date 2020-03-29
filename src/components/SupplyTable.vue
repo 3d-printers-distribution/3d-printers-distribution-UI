@@ -25,7 +25,7 @@ export default {
     return {
       supplyHeaders: [
         { text: 'Location', value: 'location' },
-        { text: 'Distance', value: 'distanceKm' },
+        { text: 'Distance (km)', value: 'distanceKm' },
         { text: 'Available', value: 'quantity' },
       ],
       supplyData,

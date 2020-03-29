@@ -25,7 +25,7 @@ export default {
     return {
       demandHeaders: [
         { text: 'Location', value: 'location' },
-        { text: 'Distance', value: 'distanceKm' },
+        { text: 'Distance (km)', value: 'distanceKm' },
         { text: 'Request', value: 'quantity' },
       ],
       demandData,
