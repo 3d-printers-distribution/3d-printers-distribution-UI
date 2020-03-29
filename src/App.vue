@@ -18,7 +18,13 @@
     </v-app-bar>
 
     <v-content>
-      <span>token: {{userToken}}</span>
+      <v-container fluid v-if="userToken">
+        <v-alert dismissible color="info">
+          <p style="font-family: monospace; word-wrap: break-word; max-width: 95vw;">
+            token: {{userToken}}
+          </p>
+        </v-alert>
+      </v-container>
       <router-view></router-view>
     </v-content>
   </v-app>
