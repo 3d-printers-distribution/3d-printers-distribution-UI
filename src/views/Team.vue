@@ -74,7 +74,7 @@
 
 <script>
 export default {
-  name: 'Contact',
+  name: 'Team',
   data() {
     return {
       team: [
@@ -140,7 +140,7 @@ export default {
         },
         {
           name: 'Manuel Ramirez Lopez',
-          role: 'DevOps',
+          role: 'Project Leader',
           linkedin: 'https://www.linkedin.com/in/manuel-ramirez-lopez',
           github: 'https://github.com/chumbo4',
           picture: '/pics/profile_manuel_ramirez_lopez.jpg',
