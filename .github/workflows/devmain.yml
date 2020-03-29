@@ -1,4 +1,4 @@
-name: Build and Deploy on Dev Branch
+name: Build on Dev Branch
 on: [push]
 
 jobs:
