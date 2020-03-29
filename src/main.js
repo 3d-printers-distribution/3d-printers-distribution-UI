@@ -4,14 +4,19 @@ import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
 import i18n from './plugins/i18n';
-import './plugins/firebase';
+import firebase from './plugins/firebase';
 
 Vue.config.productionTip = false;
 
-new Vue({
-  router,
-  store,
-  i18n,
-  vuetify,
-  render: (h) => h(App),
-}).$mount('#app');
+let app;
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      i18n,
+      store,
+      vuetify,
+      render: (h) => h(App),
+    }).$mount('#app');
+  }
+});
