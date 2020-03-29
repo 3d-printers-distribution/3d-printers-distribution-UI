@@ -1,5 +1,10 @@
-name: Build on Dev Branch
-on: [push]
+name: Build on Development Branches
+on:
+  push:
+    branches:    
+      - '*'         # matches every branch
+      - '*/*'       # matches every branch containing a single '/'
+      - '!master'   # excludes master
 
 jobs:
   build:
