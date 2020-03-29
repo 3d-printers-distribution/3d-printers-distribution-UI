@@ -46,7 +46,6 @@ export default {
   name: 'Dashboard',
   methods: {
     handleSortBy(table, prefs) {
-      console.log(table, prefs);
       switch (table) {
         case 'supply': {
           this.supplyTablePrefs = prefs;
