@@ -7,10 +7,10 @@
     </v-card>
     <v-row>
       <v-col>
-        <SupplyTable />
+        <SupplyTable :preferences="supplyTablePrefs" :handleSortBy="handleSortBy"  />
       </v-col>
       <v-col>
-        <DemandTable />
+        <DemandTable :preferences="demandTablePrefs" :handleSortBy="handleSortBy" />
       </v-col>
     </v-row>
   </v-col>
@@ -25,6 +25,11 @@ export default {
   components: {
     SupplyTable,
     DemandTable,
+  },
+  props: {
+    demandTablePrefs: { type: Object },
+    supplyTablePrefs: { type: Object },
+    handleSortBy: { type: Function },
   },
 };
 </script>
