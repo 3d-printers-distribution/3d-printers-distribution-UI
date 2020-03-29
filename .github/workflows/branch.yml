@@ -1,5 +1,10 @@
-name: Build on Dev Branch
-on: [push]
+name: Build on Development Branches
+on:
+  push:
+    branches:    
+      - '*'         # matches every branch
+      - '*/*'       # matches every branch containing a single '/'
+      - '!master'   # excludes master
 
 jobs:
   build:
@@ -12,6 +17,8 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
+        env:
+          VUE_APP_FB_API_KEY: ${{ secrets.VUE_APP_FB_API_KEY }}
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
