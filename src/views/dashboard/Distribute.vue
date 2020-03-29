@@ -7,36 +7,30 @@
     </v-card>
     <v-row>
       <v-col>
-        <v-data-table
-        >
-          <template v-slot:top>
-            <v-toolbar
-              flat
-            >
-              <span class="title">Supply</span>
-            </v-toolbar>
-          </template>
-        </v-data-table>
+        <SupplyTable :preferences="supplyTablePrefs" :handleSortBy="handleSortBy"  />
       </v-col>
       <v-col>
-        <v-data-table
-        >
-          <template v-slot:top>
-            <v-toolbar
-              flat
-            >
-              <span class="title">Demand</span>
-            </v-toolbar>
-          </template>
-        </v-data-table>
+        <DemandTable :preferences="demandTablePrefs" :handleSortBy="handleSortBy" />
       </v-col>
     </v-row>
   </v-col>
 </template>
 
 <script>
+import SupplyTable from '../../components/SupplyTable.vue';
+import DemandTable from '../../components/DemandTable.vue';
+
 export default {
   name: 'Distribute',
+  components: {
+    SupplyTable,
+    DemandTable,
+  },
+  props: {
+    demandTablePrefs: { type: Object },
+    supplyTablePrefs: { type: Object },
+    handleSortBy: { type: Function },
+  },
 };
 </script>
 

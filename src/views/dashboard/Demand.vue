@@ -1,21 +1,18 @@
 <template>
   <v-col>
-    <v-data-table
-    >
-      <template v-slot:top>
-        <v-toolbar
-          flat
-        >
-          <span class="title">Demand</span>
-        </v-toolbar>
-      </template>
-    </v-data-table>
+    <DemandTable :preferences="demandTablePrefs" :handleSortBy="handleSortBy" />
   </v-col>
 </template>
 
 <script>
+import DemandTable from '../../components/DemandTable.vue';
+
 export default {
   name: 'Demand',
+  components: {
+    DemandTable,
+  },
+  props: ['demandTablePrefs', 'handleSortBy'],
 };
 </script>
 

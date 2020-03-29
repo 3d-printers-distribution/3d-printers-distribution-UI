@@ -1,21 +1,18 @@
 <template>
   <v-col>
-    <v-data-table
-    >
-      <template v-slot:top>
-        <v-toolbar
-          flat
-        >
-          <span class="title">Supply</span>
-        </v-toolbar>
-      </template>
-    </v-data-table>
+    <SupplyTable :preferences="supplyTablePrefs" :handleSortBy="handleSortBy" />
   </v-col>
 </template>
 
 <script>
+import SupplyTable from '../../components/SupplyTable.vue';
+
 export default {
   name: 'Supply',
+  components: {
+    SupplyTable,
+  },
+  props: ['supplyTablePrefs', 'handleSortBy'],
 };
 </script>
 
