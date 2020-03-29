@@ -2,9 +2,8 @@
   <v-data-table
     :headers="supplyHeaders"
     :items="supplyData"
-    :single-select=true
     show-select
-    item-key="name"
+    item-key="id"
     class="elevation-1"
   >
     <template v-slot:top>
