@@ -1,6 +1,6 @@
 <template>
   <v-col>
-    <SupplyTable view="supply" />
+    <SupplyTable :preferences="supplyTablePrefs" :handleSortBy="handleSortBy" />
   </v-col>
 </template>
 
@@ -12,6 +12,7 @@ export default {
   components: {
     SupplyTable,
   },
+  props: ['supplyTablePrefs', 'handleSortBy'],
 };
 </script>
 

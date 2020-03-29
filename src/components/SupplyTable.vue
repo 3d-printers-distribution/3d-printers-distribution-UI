@@ -5,6 +5,8 @@
     show-select
     item-key="id"
     class="elevation-1"
+    :options="preferences"
+    @update:options="(e) => handleSortBy('supply', e)"
   >
     <template v-slot:top>
       <v-toolbar
@@ -31,6 +33,7 @@ export default {
       supplyData,
     };
   },
+  props: ['preferences', 'handleSortBy'],
 };
 </script>
 

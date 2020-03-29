@@ -1,6 +1,6 @@
 <template>
   <v-col>
-    <DemandTable view="demand" />
+    <DemandTable :preferences="demandTablePrefs" :handleSortBy="handleSortBy" />
   </v-col>
 </template>
 
@@ -12,6 +12,7 @@ export default {
   components: {
     DemandTable,
   },
+  props: ['demandTablePrefs', 'handleSortBy'],
 };
 </script>
 
