@@ -1,21 +1,18 @@
 <template>
   <v-col>
-    <v-data-table
-    >
-      <template v-slot:top>
-        <v-toolbar
-          flat
-        >
-          <span class="title">Supply</span>
-        </v-toolbar>
-      </template>
-    </v-data-table>
+    <SupplyTable view="supply" />
   </v-col>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import SupplyTable from '../../components/SupplyTable.vue';
+
 export default {
   name: 'Supply',
+  components: {
+    SupplyTable,
+  },
 };
 </script>
 
