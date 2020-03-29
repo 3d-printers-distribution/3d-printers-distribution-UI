@@ -6,7 +6,14 @@
       "emailLabel": "Mail",
       "passwordLabel": "Password",
       "loginBtnLabel": "Login",
-      "resetPasswordBtnLabel": "Reset password"
+      "resetPasswordBtnLabel": "Reset password",
+      "createAccountBtnLabel": "Create Account",
+      "validation": {
+        "emailRequired": "Please enter your mail address.",
+        "emailMustBeValid": "This address is not valid.",
+        "passwordRequired": "Please enter a password.",
+        "fieldRequired": "Required field"
+      }
     },
     "forgotPassword": "Forgot password",
     "backToLogin": "Back to Login",
