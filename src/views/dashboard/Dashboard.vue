@@ -80,7 +80,6 @@ export default {
     }, (err) => {
       // this.gettingLocation = false;
       // this.errorStr = err.message;
-      console.log(err);
     }); */
   },
   data() {
