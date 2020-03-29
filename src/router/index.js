@@ -18,9 +18,9 @@ const routes = [
     component: () => import('../views/Onboarding.vue'),
   },
   {
-    path: '/contact',
-    name: 'contact',
-    component: () => import('../views/Contact.vue'),
+    path: '/team',
+    name: 'team',
+    component: () => import('../views/Team.vue'),
   },
   {
     path: '/login',
