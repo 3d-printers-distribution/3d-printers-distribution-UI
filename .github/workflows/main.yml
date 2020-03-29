@@ -36,4 +36,4 @@ jobs:
         with:
           args: deploy --only hosting --project d-printing-dev
         env:
-          VUE_APP_FB_API_KEY: ${{ secrets.VUE_APP_FB_API_KEY }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
