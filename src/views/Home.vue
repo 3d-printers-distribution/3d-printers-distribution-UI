@@ -10,13 +10,16 @@
     </v-row>
     <v-row class="justify-center">
       <v-col class="d-flex flex-column align-center" sm="8">
-        <h2 class="headline pb-2 text-center">
-          Empowering the 3D printing community to fight COVID-19!</h2>
-          <div class="subtitle-1 text-center my-4">
-            Join us, if you can help as a supplier (3d-printer-owner), as a
-            demanding facility (hospital, dental clinic, pharmacy,...) or as a distributor
-            (volunteer, civil servant).
-          </div>
+        <h2
+          class="headline pb-2 text-center"
+        >Empowering the 3D printing community to fight COVID-19!</h2>
+        <div class="subtitle-1 text-center my-4">
+          Join us, if you would like to help as:
+          <br />
+          <v-btn dark color="secondary" class="mr-4 mt-4">3d-printer-owner</v-btn>
+          <v-btn dark color="secondary" class="mr-4 mt-4">Distributor</v-btn>
+          <v-btn dark color="secondary" class="mr-4 mt-4">Face-shield consumer</v-btn>
+        </div>
         <div>
           <v-btn
             dark
@@ -24,13 +27,17 @@
             class="mr-4 mt-4"
             :block="$vuetify.breakpoint.smAndDown"
             :to="{ name: 'signup' }"
-          >
-            Signup to contribute
-          </v-btn>
+          >Signup to contribute</v-btn>
         </div>
-          <iframe class="iFrame" width="560" height="315" src="https://www.youtube.com/embed/xkrW_oU3lxA"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope;
-                  picture-in-picture" allowfullscreen></iframe>
+        <iframe
+          class="iFrame"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/xkrW_oU3lxA"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope;
+                  picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </v-col>
     </v-row>
   </v-container>
@@ -42,12 +49,12 @@ export default {
 };
 </script>
 <style lang="scss">
-  .logo{
-    width: 100%;
-  }
-  .iFrame{
-    margin-bottom: 4rem;
-    margin-top: 4rem;
-    border: none;
-  }
+.logo {
+  width: 100%;
+}
+.iFrame {
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+  border: none;
+}
 </style>
