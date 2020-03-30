@@ -22,5 +22,7 @@ export const post = (endpoint, content) => axios.post(`${apiBaseUrl}/${endpoint}
 
 export const get = (endpoint, params) => axios.get(`${apiBaseUrl}/${endpoint}`, params);
 
+export const patch = (endpoint, data) => axios.patch(`${apiBaseUrl}/${endpoint}`, data);
+
 // 'delete' being a reserved word..
 export const remove = (endpoint) => axios.delete(`${apiBaseUrl}/${endpoint}`);
