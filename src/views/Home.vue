@@ -37,15 +37,6 @@
 <script>
 export default {
   name: 'Home',
-  data() {
-    return {
-      callToActions: [
-        { title: 'I have a 3d printer', target: 'Signup_supplier' },
-        { title: 'I need masks', target: 'Signup_demand' },
-        { title: 'I can deliver masks', target: 'Signup_distributor' },
-      ],
-    };
-  },
 };
 </script>
 <style lang="scss">
