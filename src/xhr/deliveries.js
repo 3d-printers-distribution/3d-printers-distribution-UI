@@ -1,55 +1,27 @@
-import axios from 'axios';
-import { endpointBase } from './config';
+import { get, remove, post, patch } from './index';
 
 /**
- * CREATE a scheduled delivery record
- * @param {IdString} distributorId
- * @param {IdString|IdString[]} supplierIds
- * @param {IdString|IdString[]} requesterIds
- * @param {Date} date
+ * CREATE a delivery allocation
+ * @param {IdString} stockId
+ * @param {IdString} demandId
+ * @param {number} amount
  *
  * response body: {id}
  */
-function scheduleDelivery(distributorId, supplierIds, requesterIds, date) {
-  return axios.post(`${endpointBase}/delivery`, {
-    distributorId,
-    supplierIds,
-    requesterIds,
-    date,
+export function scheduleDelivery(stockId, demandId, amount) {
+  return post('allocation', {
+    stockId,
+    demandId,
+    amount,
   });
 }
 
-/**
- * READ deliveries relevant to a supplier
- * @param {IdString} supplierId
- * @returns {Promise<AxiosResponse<T>>}
- *
- * response body: {id, supplier: {name, phone}, requester: {name, phone}, quantity, date}[]
- */
-function seeDeliveriesForSupplier(supplierId) {
-  return axios.get(`${endpointBase}/delivery`, { supplierId });
+export function getDelivery(id) {
+  return get(`allocation/${id}`);
 }
 
-/**
- * READ deliveries relevant to a requester
- * @param {IdString} requesterId
- * @returns {Promise<AxiosResponse<T>>}
- *
- * response body: {id, supplier: {name, phone}, requester: {name, phone}, quantity, date}[]
- */
-function seeDeliveriesForRequester(requesterId) {
-  return axios.get(`${endpointBase}/delivery`, { requesterId });
-}
-
-/**
- * READ deliveries relevant to a distributor
- * @param {IdString} distributorId
- * @returns {Promise<AxiosResponse<T>>}
- *
- * response body: {id, supplier: {name, phone}, requester: {name, phone}, quantity, date}[]
- */
-function seeDeliveriesForDistributor(distributorId) {
-  return axios.get(`${endpointBase}/delivery`, { distributorId });
+export function updateDelivery(id, data) {
+  return patch(`allocation/${id}`, data);
 }
 
 /**
@@ -59,26 +31,6 @@ function seeDeliveriesForDistributor(distributorId) {
  *
  * no response body expected
  */
-function cancelDelivery(deliveryId) {
-  return axios.delete(`${endpointBase}/delivery/${deliveryId}`);
+export function cancelDelivery(deliveryId) {
+  return remove(`/allocation/${deliveryId}`);
 }
-
-/**
- * UPDATE delivery for REQUESTER to acknowledge receipt of delivery
- * @param deliveryId
- * @returns {Promise<AxiosResponse<T>>}
- *
- * no response body expected
- */
-function confirmReceipt(deliveryId) {
-  return axios.patch(`${endpointBase}/delivery/${deliveryId}`, { received: true });
-}
-
-export default {
-  scheduleDelivery,
-  cancelDelivery,
-  confirmReceipt,
-  seeDeliveriesForSupplier,
-  seeDeliveriesForRequester,
-  seeDeliveriesForDistributor,
-};

@@ -7,10 +7,18 @@
     </v-card>
     <v-row>
       <v-col>
-        <SupplyTable :preferences="supplyTablePrefs" :handleSortBy="handleSortBy"  />
+        <SupplyTable
+          :preferences="supplyTablePrefs"
+          :handleSortBy="handleSortBy"
+          :supplyData="supplyData"
+        />
       </v-col>
       <v-col>
-        <DemandTable :preferences="demandTablePrefs" :handleSortBy="handleSortBy" />
+        <DemandTable
+          :preferences="demandTablePrefs"
+          :handleSortBy="handleSortBy"
+          :demandData="demandData"
+        />
       </v-col>
     </v-row>
   </v-col>
@@ -30,6 +38,8 @@ export default {
     demandTablePrefs: { type: Object },
     supplyTablePrefs: { type: Object },
     handleSortBy: { type: Function },
+    supplyData: { type: Array },
+    demandData: { type: Array },
   },
 };
 </script>
