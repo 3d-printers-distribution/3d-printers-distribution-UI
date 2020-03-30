@@ -8,6 +8,7 @@
       >
 <!--        Hamburger icon:-->
         <v-icon v-if="userIsLoggedIn" @click="drawer = !drawer" class="mr-3">mdi-menu</v-icon>
+
 <!--        Navbar-title:-->
         <v-toolbar-title>
           <router-link style="text-decoration:none;color:black;"
@@ -15,6 +16,7 @@
           </router-link>
         </v-toolbar-title>
         <v-spacer></v-spacer>
+
 <!--        Nav-Menu:-->
         <v-btn v-if="userIsLoggedIn" text :to="{ name: 'dashboard' }">Dashboard</v-btn>
         <v-btn text :to="{ name: 'team' }">Team</v-btn>
@@ -24,11 +26,10 @@
       </v-app-bar>
 
 <!--      Side Drawer-->
-      <v-navigation-drawer v-if="userIsLoggedIn" app v-model="drawer" class="indigo">
-        <p>test</p>
-      </v-navigation-drawer>
+      <Drawer :drawer="drawer" :user-is-logged-in="userIsLoggedIn" />
     </nav>
 
+<!--    Content-->
     <v-content>
       <v-container fluid v-if="userToken">
         <v-alert dismissible color="info">
@@ -39,10 +40,14 @@
       </v-container>
       <router-view></router-view>
     </v-content>
+
+<!--    Footer-->
      <v-footer
       dark
       padless
     >
+
+<!--       Still in progress-warning-->
       <v-container
         fluid
         class="red lighten-2 pa-md-12 my-4 text-center"
@@ -52,6 +57,8 @@
           Feel free to explore the site to test it's already existing functionality.
         </div>
       </v-container>
+
+<!--       Actual footer-->
       <v-card
         flat
         tile
@@ -78,8 +85,10 @@
 
 <script>
 import { mapState } from 'vuex';
+import Drawer from './components/Drawer.vue';
 
 export default {
+  components: { Drawer },
   name: 'App',
   computed: {
     ...mapState(['userToken']),
