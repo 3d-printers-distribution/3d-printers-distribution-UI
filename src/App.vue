@@ -42,17 +42,6 @@
         tile
         class="indigo lighten-1 white--text text-center v-picker--full-width"
       >
-        <v-card-text>
-          <v-btn
-            v-for="icon in icons"
-            :key="icon"
-            class="mx-4 white--text"
-            icon
-          >
-            <v-icon size="24px">{{ icon }}</v-icon>
-          </v-btn>
-        </v-card-text>
-        <v-divider></v-divider>
         <v-card-text class="white--text">
           {{ new Date().getFullYear() }} — <strong>3DtoMeds</strong>
         </v-card-text>

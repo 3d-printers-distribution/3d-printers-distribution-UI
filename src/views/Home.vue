@@ -19,6 +19,7 @@
             color="primary"
             class="mr-4 mt-4"
             :block="$vuetify.breakpoint.smAndDown"
+            :to="{ name: 'signup' }"
           >Signup to contribute</v-btn>
           <br />
         </div>

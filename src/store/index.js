@@ -21,6 +21,8 @@ const store = new Vuex.Store({
           commit('setUserToken', null);
         });
     },
+    fetchUserInfo() {
+    },
   },
   modules: {
   },
