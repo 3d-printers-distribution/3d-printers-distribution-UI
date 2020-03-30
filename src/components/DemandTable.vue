@@ -19,8 +19,6 @@
 </template>
 
 <script>
-import demandData from '../../mocks/raw/demand';
-
 export default {
   name: 'Table',
   data() {
@@ -30,10 +28,9 @@ export default {
         { text: 'Distance (km)', value: 'distanceKm' },
         { text: 'Request', value: 'quantity' },
       ],
-      demandData,
     };
   },
-  props: ['preferences', 'handleSortBy'],
+  props: ['preferences', 'handleSortBy', 'demandData'],
 };
 </script>
 

@@ -30,6 +30,8 @@
           <router-view
             :demandTablePrefs="demandTablePrefs"
             :supplyTablePrefs="supplyTablePrefs"
+            :supplyData="supplyResults"
+            :demandData="demandResults"
             :handleSortBy="handleSortBy"
           />
         </v-slide-x-transition>
@@ -41,6 +43,20 @@
 <script>
 import supplyData from '../../../mocks/raw/supply';
 import demandData from '../../../mocks/raw/demand';
+
+import {
+  getConsumers,
+  // createDemand,
+} from '../../xhr/consumer';
+
+function sanitizeDemandResults(data) {
+  return data.map((row) => ({
+    id: row.id,
+    location: row.name,
+    distanceKm: '??',
+    quantity: row.demand.reduce((acc, demand) => acc + demand.amountRemaining, 0),
+  }));
+}
 
 export default {
   name: 'Dashboard',
@@ -62,6 +78,11 @@ export default {
   },
   created() {
     if (this.$route.name === 'dashboard') { this.$router.replace({ name: 'supply' }); }
+
+    const consumersReq = getConsumers();
+    consumersReq.then((res) => {
+      this.demandResults = sanitizeDemandResults(res.data);
+    });
 
     /*
     // TODO extract this function but not sure how to do so the vue way
