@@ -14,10 +14,14 @@
           <v-col
             cols="12"
             md="auto"
-            v-for="cta in callToActions" :key="cta.title"
           >
-            <v-btn dark class="grey darken-2 text-uppercase">
-              {{ cta.title }}</v-btn>
+            <v-btn dark class="grey darken-2 text-uppercase mb-2" :to="{ name: 'signup' }">
+              Signup to contribute
+            </v-btn>
+            <div class="subtitle-1">Join us, if you can help as a supplier (3d-printer-owner), as a
+              demanding facility (hospital, dental clinic, pharmacy,...) or as a distributor
+              (volunteer, civil servant, ...).
+            </div>
           </v-col>
         </v-row>
       </v-col>
