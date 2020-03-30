@@ -31,7 +31,7 @@ import { defaults } from './config';
  *
  * response body: {id, name, phone, email, latLng, quantity}
  */
-function getConsumer(id) {
+export function getConsumer(id) {
   return get(`consumer/${id}/demands`);
 }
 
@@ -43,7 +43,7 @@ function getConsumer(id) {
  *
  * response body: {id, name, latLng, quantity}[]
  */
-function getConsumers(location = defaults.location, rangeKm = defaults.rangeKm) {
+export function getConsumers(location = defaults.location, rangeKm = defaults.rangeKm) {
   const params = {
     location,
     distance: rangeKm,
@@ -61,10 +61,3 @@ export function createDemand(productId, amount) {
 export function removeDemand(demandId) {
   return remove(`demand/${demandId}`);
 }
-
-export default {
-  getConsumer,
-  getConsumers,
-  createDemand,
-  removeDemand,
-};
