@@ -50,8 +50,6 @@ import {
 } from '../../xhr/consumer';
 
 function sanitizeDemandResults(data) {
-  console.log(data);
-
   return data.map((row) => ({
     id: row.id,
     location: row.name,

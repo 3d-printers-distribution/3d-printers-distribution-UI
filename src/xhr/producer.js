@@ -40,7 +40,9 @@ export function getProducers(location = defaults.location, rangeKm = defaults.ra
     distance: rangeKm,
   };
 
-  console.log({ params });
+  if (params) {
+    // do nothing (bypassing errors while BE is fixed)
+  }
 
   return get('producer' /* { params } */);
 }
