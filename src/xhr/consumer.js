@@ -21,29 +21,18 @@
  * @property {number} range - in KM
  */
 
-import axios from 'axios';
-import { endpointBase, defaults } from './config';
+import { get, remove, post } from './index';
+import { defaults } from './config';
 
 /**
- * CREATE new requester
- * @param {NewRequesterData} data
- * @returns {Promise<AxiosResponse<T>>}
- *
- * response body: {id}
- */
-function createRequester(data) {
-  return axios.post(`${endpointBase}/requester`, data);
-}
-
-/**
- * FETCH SINGLE requester
+ * FETCH SINGLE consumer
  * @param id
  * @returns {Promise<AxiosResponse<T>>}
  *
  * response body: {id, name, phone, email, latLng, quantity}
  */
-function getRequester(id) {
-  return axios.get(`${endpointBase}/requester/${id}`);
+function getConsumer(id) {
+  return get(`consumer/${id}/demands`);
 }
 
 /**
@@ -54,42 +43,28 @@ function getRequester(id) {
  *
  * response body: {id, name, latLng, quantity}[]
  */
-function getRequesters(location, rangeKm = defaults.rangeKm) {
+function getConsumers(location = defaults.location, rangeKm = defaults.rangeKm) {
   const params = {
     location,
-    range: rangeKm,
+    distance: rangeKm,
   };
 
-  return axios.get(`${endpointBase}/requester`, { params });
+  console.log({ params });
+
+  return get('consumer' /* { params } */);
 }
 
-/**
- * UPDATE requester
- * @param {IdString} id
- * @param {NewRequesterData} data
- * @returns {Promise<AxiosResponse<T>>}
- *
- * no response body expected
- */
-function updateRequester(id, data) {
-  return axios.patch(`${endpointBase}/requester/${id}`, data);
+export function createDemand(productId, amount) {
+  return post('demand', { productId, amount });
 }
 
-/**
- * DELETE requester
- * @param {IdString} id
- * @returns {Promise<AxiosResponse<T>>}
- *
- * no response body expected
- */
-function deleteRequester(id) {
-  return axios.delete(`${endpointBase}/requester/${id}`);
+export function removeDemand(demandId) {
+  return remove(`demand/${demandId}`);
 }
 
 export default {
-  createRequester,
-  getRequester,
-  getRequesters,
-  updateRequester,
-  deleteRequester,
+  getConsumer,
+  getConsumers,
+  createDemand,
+  removeDemand,
 };
