@@ -13,6 +13,7 @@
 
 <script>
 import axios from 'axios';
+import store from '../store';
 
 /**
  * Use the Browser Geolocation API to fetch the users location
@@ -46,12 +47,17 @@ function geocodeLocationToString(locationData) {
  * @returns {Promise<{text: string}>}
  */
 function reverseLocation(coords) {
+  delete axios.defaults.headers.common.Authorization;
   const requestUrl = `https://geocode.xyz/${coords.latitude},${coords.longitude}?json=1`;
   return axios.get(requestUrl)
     .then((response) => Promise.resolve({
-      ...coords,
+      latitude: coords.latitude,
+      longitude: coords.longitude,
       text: geocodeLocationToString(response.data),
-    }));
+    }))
+    .finally(() => {
+      axios.defaults.headers.common.Authorization = store.state.userToken;
+    });
 }
 
 export default {

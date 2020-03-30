@@ -6,7 +6,7 @@
           <v-card-title>Get Started</v-card-title>
           <v-card-text>
               <p class="body-2">Before you can begin, we need to know some details:</p>
-              <v-form ref="onboarding-form">
+              <v-form ref="onboardingForm">
                 <section class="basic-form">
                   <v-text-field
                     filled
@@ -53,18 +53,31 @@
                   v-if="roleFromSelection === 'consumer'"
                 >
                   <GeolocationInput @input="setGeolocation"/>
+                  <span class="caption">
+                    We need your location to match you to suppliers and distributors near you.
+                  </span>
+                  <v-select
+                    class="mt-4"
+                    label="What type of Institution are you?"
+                    v-model="consumerForm.locationType.value"
+                    :items="consumerForm.locationType.choices"
+                  ></v-select>
                 </section>
                 <section
-                  class="supplier-form"
-                  v-if="roleFromSelection === 'supplier'"
+                  class="producer-form"
+                  v-if="roleFromSelection === 'producer'"
                 >
-
+                  <GeolocationInput @input="setGeolocation"/>
+                  <span class="caption">
+                    We need your location to match you to consumers and distributors near you.
+                  </span>
                 </section>
 
                 <v-btn
                   large block
                   color="primary"
-                  type="submit"
+                  class="mt-4"
+                  @click="submitForm"
                 >Submit</v-btn>
               </v-form>
           </v-card-text>
@@ -76,6 +89,8 @@
 
 <script>
 import GeolocationInput from './GeolocationInput.vue';
+import { consumer, distributor, producer } from '../xhr/sanitizers/registration';
+import registration from '../xhr/registration';
 
 const userRoles = [
   {
@@ -121,18 +136,15 @@ export default {
         },
       },
       consumerForm: {
-        location: { lat: 0, lng: 0 },
         locationType: {
-          value: '',
+          value: 'HOSPITAL',
           choices: [
             { text: 'Hospital', value: 'HOSPITAL' },
             { text: 'Pharmacy', value: 'PHARMACY' },
           ],
         },
       },
-      producerForm: {
-        location: { lat: 0, lng: 0 },
-      },
+      location: null,
     };
   },
   computed: {
@@ -142,7 +154,54 @@ export default {
   },
   methods: {
     setGeolocation(location) {
-      console.log(location);
+      const locationLatLng = {
+        lat: location.latitude,
+        lng: location.longitude,
+      };
+
+      this.location = locationLatLng;
+    },
+    validateForm() {
+      if (this.$refs.onboardingForm.validate()) {
+        // ensure that consumers or producers have given their location
+        return !(['consumer', 'producer'].includes(this.roleFromSelection) && !this.location);
+      }
+      return false;
+    },
+    submitForm() {
+      if (this.validateForm()) {
+        if (this.roleFromSelection === 'consumer') {
+          const newConsumer = consumer(
+            this.basicForm.name.field.trim(),
+            this.basicForm.phone.field.trim(),
+            this.basicForm.email.field.trim(),
+            this.location,
+            this.consumerForm.locationType.value,
+          );
+
+          registration('consumer', newConsumer).then(this.onSuccess);
+        } else if (this.roleFromSelection === 'producer') {
+          const newProducer = producer(
+            this.basicForm.name.field.trim(),
+            this.basicForm.phone.field.trim(),
+            this.basicForm.email.field.trim(),
+            this.location,
+          );
+
+          registration('producer', newProducer).then(this.onSuccess);
+        } else if (this.roleFromSelection === 'distributor') {
+          const newDistributor = distributor(
+            this.basicForm.name.field.trim(),
+            this.basicForm.phone.field.trim(),
+            this.basicForm.email.field.trim(),
+          );
+
+          registration('producer', newDistributor).then(this.onSuccess);
+        }
+      }
+    },
+    onSuccess() {
+      this.$router.replace({ name: 'dashboard' });
     },
   },
 };
