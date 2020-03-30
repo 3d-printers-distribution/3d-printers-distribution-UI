@@ -4,6 +4,13 @@
       <v-card-text>
         <span class="title">Zurich, Switzerland</span>
       </v-card-text>
+      <v-card-text>
+        Show activity within (km):
+        <v-text-field
+          type="number"
+          v-model.number="operatingRadiusKm"
+        />
+      </v-card-text>
     </v-card>
 
     <v-row>
@@ -41,26 +48,73 @@
 </template>
 
 <script>
-import supplyData from '../../../mocks/raw/supply';
-import demandData from '../../../mocks/raw/demand';
-
 import {
   getConsumers,
-  // createDemand,
 } from '../../xhr/consumer';
+import {
+  getProducers,
+} from '../../xhr/producer';
 
 function sanitizeDemandResults(data) {
-  return data.map((row) => ({
-    id: row.id,
-    location: row.name,
-    distanceKm: '??',
-    quantity: row.demand.reduce((acc, demand) => acc + demand.amountRemaining, 0),
-  }));
+  return data
+    .map((row) => ({
+      id: row.id,
+      location: row.name,
+      distanceKm: '??',
+      quantity: row.demand.reduce((acc, demand) => acc + demand.amountRemaining, 0),
+    }));
+  // .filter(({ quantity }) => quantity > 0);
 }
+
+function sanitizeSupplyResults(data) {
+  console.log(data);
+  return data
+    .map((row) => ({
+      id: row.id,
+      location: row.name,
+      distanceKm: '??',
+      quantity: row.stock.reduce((acc, demand) => acc + demand.amountRemaining, 0),
+    }));
+  // .filter(({ quantity }) => quantity > 0);
+}
+
+const sampleLoc = { latitude: 0, longitude: 0 };
 
 export default {
   name: 'Dashboard',
+  watch: {
+    operatingRadiusKm(rangeKm) {
+      this.updateQueries({ rangeKm });
+    },
+  },
   methods: {
+    fetchProducers() {
+      const producersReq = getProducers(sampleLoc, this.demandQuery.rangeKm);
+      producersReq.then((res) => {
+        this.supplyResults = sanitizeSupplyResults(res.data);
+      });
+    },
+    fetchConsumers() {
+      const consumersReq = getConsumers(sampleLoc, this.demandQuery.rangeKm);
+      consumersReq.then((res) => {
+        this.demandResults = sanitizeDemandResults(res.data);
+      });
+    },
+    updateQueries(fields) {
+      this.supplyQuery = {
+        ...this.supplyQuery,
+        ...fields,
+      };
+      this.demandQuery = {
+        ...this.demandQuery,
+        ...fields,
+      };
+
+      // todo: be smarter about knowing when to call each update
+      // for now the only fields are location and range which affect both
+      this.fetchProducers();
+      this.fetchConsumers();
+    },
     handleSortBy(table, prefs) {
       switch (table) {
         case 'supply': {
@@ -77,12 +131,9 @@ export default {
     },
   },
   created() {
-    if (this.$route.name === 'dashboard') { this.$router.replace({ name: 'supply' }); }
-
-    const consumersReq = getConsumers();
-    consumersReq.then((res) => {
-      this.demandResults = sanitizeDemandResults(res.data);
-    });
+    if (this.$route.name === 'dashboard') {
+      this.$router.replace({ name: 'supply' });
+    }
 
     /*
     // TODO extract this function but not sure how to do so the vue way
@@ -102,19 +153,24 @@ export default {
       // this.errorStr = err.message;
     }); */
   },
+  mounted() {
+    this.fetchProducers();
+    this.fetchConsumers();
+  },
   data() {
     return {
       currentLocation: {},
       supplyQuery: {},
-      supplyResults: supplyData,
+      supplyResults: [],
       supplyTablePrefs: {
         sortBy: ['distanceKm'],
       },
       demandQuery: {},
-      demandResults: demandData,
+      demandResults: [],
       demandTablePrefs: {
         sortBy: ['distanceKm'],
       },
+      operatingRadiusKm: 20,
     };
   },
 };
