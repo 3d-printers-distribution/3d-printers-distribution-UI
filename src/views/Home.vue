@@ -13,13 +13,15 @@
         <h2 class="headline pb-2 text-center">
           Empowering the 3D printing community to fight COVID-19!</h2>
         <div class="d-flex flex-row flex-wrap justify-center">
-            <v-btn
-              dark color="primary"
-              class="mr-4 mt-4"
-              :block="$vuetify.breakpoint.smAndDown"
-            >
-              Signup to contribute</v-btn>
-          <div class="subtitle-1">Join us, if you can help as a supplier (3d-printer-owner), as a
+          <v-btn
+            dark color="primary"
+            class="mr-4 my-4"
+            :block="$vuetify.breakpoint.smAndDown"
+          >
+            Signup to contribute
+          </v-btn>
+          <div class="subtitle-1 text-center">
+            Join us, if you can help as a supplier (3d-printer-owner), as a
             demanding facility (hospital, dental clinic, pharmacy,...) or as a distributor
             (volunteer, civil servant, ...).
           </div>
