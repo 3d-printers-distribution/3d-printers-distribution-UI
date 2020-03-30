@@ -1,4 +1,6 @@
-import { get, remove, post, patch } from './index';
+import {
+  get, remove, post, patch,
+} from './index';
 
 /**
  * CREATE a delivery allocation
