@@ -39,6 +39,7 @@ export default {
   methods: {
     addSupply(amount) {
       createStock('dfac0bf9-c4af-4d45-881c-7f1849d8a8a5', amount);
+      this.$router.go();
     },
   },
 };
