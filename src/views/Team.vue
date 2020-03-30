@@ -125,7 +125,7 @@ export default {
           role: 'Product Design & Marketing',
           linkedin: 'https://www.linkedin.com/in/florent-bardy-345263a',
           github: 'https://github.com/Flobar42',
-          country: 'United Kingdom',
+          country: 'France',
           picture: '/pics/profile_florent_bardy.jpg',
         },
         {
