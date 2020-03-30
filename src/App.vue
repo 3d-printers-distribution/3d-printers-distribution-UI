@@ -1,6 +1,33 @@
 <template>
   <v-app>
-    <NavBar />
+<!--    Navigation bar:-->
+    <nav>
+      <v-app-bar
+        app
+        flat
+      >
+<!--        Hamburger icon:-->
+        <v-icon v-if="userIsLoggedIn" @click="drawer = !drawer" class="mr-3">mdi-menu</v-icon>
+<!--        Navbar-title:-->
+        <v-toolbar-title>
+          <router-link style="text-decoration:none;color:black;"
+                       :to="{ name: 'home' }"> 3DtoMeds
+          </router-link>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+<!--        Nav-Menu:-->
+        <v-btn v-if="userIsLoggedIn" text :to="{ name: 'dashboard' }">Dashboard</v-btn>
+        <v-btn text :to="{ name: 'team' }">Team</v-btn>
+        <v-btn text :to="{ name: 'about' }">About</v-btn>
+        <v-btn text v-if="userIsLoggedIn" @click="logoutPlease">Logout</v-btn>
+        <v-btn text v-else :to="{name: 'login'}">Login</v-btn>
+      </v-app-bar>
+
+<!--      Side Drawer-->
+      <v-navigation-drawer v-if="userIsLoggedIn" app v-model="drawer" class="indigo">
+        <p>test</p>
+      </v-navigation-drawer>
+    </nav>
 
     <v-content>
       <v-container fluid v-if="userToken">
@@ -51,16 +78,19 @@
 
 <script>
 import { mapState } from 'vuex';
-import NavBar from './components/NavBar.vue';
 
 export default {
-  components: { NavBar },
   name: 'App',
   computed: {
     ...mapState(['userToken']),
     userIsLoggedIn() {
       return !!this.$store.state.user;
     },
+  },
+  data() {
+    return {
+      drawer: false,
+    };
   },
   methods: {
     logoutPlease() {
