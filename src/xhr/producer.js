@@ -1,95 +1,66 @@
 /**
  * @typedef IdString
- * @type number
+ * @type string
  *
  * @typedef LatLng
  * @type object
  * @property {number} latitude
  * @property {number} longitude
  *
- * @typedef NewSupplierData
- * @type object
- * @property {string} name - of user/location
- * @property {string} email
- * @property {string} phone
- * @property {LatLng} latLng
- * @property {string} printerSetup
- * @property {?number} quantity
- *
  * @typedef SupplierFilter
  * @type objects
  * @property {number} range - in KM
  */
 
-import axios from 'axios';
-import { endpointBase, defaults } from './config';
-
-/**
- * CREATE new supplier
- * @param {NewSupplierData} data
- * @returns {Promise<AxiosResponse<T>>}
- *
- * response body: {id}
- */
-function createSupplier(data) {
-  return axios.post(`${endpointBase}/supplier`, data);
-}
+import { get, remove, post } from './index';
+import { defaults } from './config';
 
 /**
  * FETCH SINGLE supplier
- * @param id
+ * @param {IdString} id
  * @returns {Promise<AxiosResponse<T>>}
  *
  * response body: {id, name, phone, email, latLng, quantity}
  */
-function getSupplier(id) {
-  return axios.get(`${endpointBase}/supplier/${id}`);
+export function getProducer(id) {
+  return get(`producer/${id}/stocks`);
 }
 
 /**
- * READ ALL suppliers
+ * FETCH ALL suppliers
  * @param {LatLng} location
  * @param {number} rangeKm
  * @returns {Promise<AxiosResponse<T>>}
  *
  * response body: {id, name, latLng, quantity}[]
  */
-function getSuppliers(location, rangeKm = defaults.rangeKm) {
+export function getProducers(location = defaults.location, rangeKm = defaults.rangeKm) {
   const params = {
-    location,
-    range: rangeKm,
+    ...location,
+    distance: rangeKm,
   };
 
-  return axios.get(`${endpointBase}/supplier`, { params });
+  console.log({ params });
+
+  return get('producer' /* { params } */);
 }
 
-/**
- * UPDATE supplier
- * @param {IdString} id
- * @param {NewSupplierData} data
- * @returns {Promise<AxiosResponse<T>>}
- *
- * no response body expected
- */
-function updateSupplier(id, data) {
-  return axios.patch(`${endpointBase}/supplier/${id}`, data);
+export function createStock(productId, amount) {
+  return post('stock', { productId, amount });
 }
 
-/**
- * DELETE supplier
- * @param {IdString} id
- * @returns {Promise<AxiosResponse<T>>}
- *
- * no response body expected
- */
-function deleteSupplier(id) {
-  return axios.delete(`${endpointBase}/supplier/${id}`);
+export function removeStock(stockId) {
+  return remove(`stock/${stockId}`);
 }
 
-export default {
-  createSupplier,
-  getSupplier,
-  getSuppliers,
-  updateSupplier,
-  deleteSupplier,
-};
+export function createProduct(name) {
+  return post('product', { name });
+}
+
+export function getProducts() {
+  return get('product');
+}
+
+export function removeProduct(productId) {
+  return remove(`product/${productId}`);
+}
