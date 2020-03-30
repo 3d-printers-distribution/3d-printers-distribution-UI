@@ -49,6 +49,17 @@ import {
   // createDemand,
 } from '../../xhr/consumer';
 
+function sanitizeDemandResults(data) {
+  console.log(data);
+
+  return data.map((row) => ({
+    id: row.id,
+    location: row.name,
+    distanceKm: '??',
+    quantity: row.demand.reduce((acc, demand) => acc + demand.amountRemaining, 0),
+  }));
+}
+
 export default {
   name: 'Dashboard',
   methods: {
@@ -70,15 +81,9 @@ export default {
   created() {
     if (this.$route.name === 'dashboard') { this.$router.replace({ name: 'supply' }); }
 
-    console.log(this.demandResults);
-    this.demandResults = [demandData[0]];
-    console.log(this.demandResults);
-
     const consumersReq = getConsumers();
     consumersReq.then((res) => {
-      console.log(res);
-      // this.demandResults = [demandData[0]];
-      // console.log(this.demandResults);
+      this.demandResults = sanitizeDemandResults(res.data);
     });
 
     /*
