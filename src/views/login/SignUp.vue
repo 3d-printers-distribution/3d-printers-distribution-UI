@@ -29,6 +29,10 @@
         :rules="createAccountForm.password.rules"
         :label="$t('login.form.passwordLabel')"
         :disabled="loading"
+        :type="createAccountForm.password.visibility ? 'text' : 'password'"
+        :append-icon="createAccountForm.password.visibility ? 'mdi-eye' : 'mdi-eye-off'"
+        @click:append=
+          "createAccountForm.password.visibility = !createAccountForm.password.visibility"
         @keypress.enter="createAccount"
       ></v-text-field>
       <!-- Create account submit button -->
@@ -44,8 +48,9 @@
         {{ $t('login.form.createAccountBtnLabel') }}
       </v-btn>
     </v-form>
-    <!-- Password reset toggle link -->
-  </v-container>
+    <v-row class="px-4 justify-center mt-4 login-links">
+      <router-link :to="{ name: 'login' }">Back to login</router-link>
+    </v-row>  </v-container>
 </login-container>
 </template>
 
@@ -73,6 +78,7 @@ export default {
         },
         password: {
           field: '',
+          visibility: false,
           rules: [
             (v) => !!v || this.$t('validation.passwordRequired'), // Check if field is empty
           ],

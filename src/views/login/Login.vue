@@ -24,8 +24,6 @@
           :disabled="loading"
           @keypress.enter="login"
         ></v-text-field>
-
-        <!-- Login submit button -->
         <v-text-field
           required
           filled
