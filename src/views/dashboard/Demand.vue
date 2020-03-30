@@ -4,7 +4,7 @@
       <v-card-text>
         <v-row no-gutters>
           <v-spacer></v-spacer>
-          <AddSupplyDemandDialog
+          <AddSupplyDemandDialog @submit="addDemand"
             title="Add your demand"
             helpertext="How many face shields will you need?">
           </AddSupplyDemandDialog>
@@ -26,6 +26,7 @@
 <script>
 import DemandTable from '../../components/DemandTable.vue';
 import AddSupplyDemandDialog from './AddSupplyDemandDialog.vue';
+import { createDemand } from '../../xhr/consumer';
 
 export default {
   name: 'Demand',
@@ -34,6 +35,11 @@ export default {
     AddSupplyDemandDialog,
   },
   props: ['demandTablePrefs', 'handleSortBy', 'demandData'],
+  methods: {
+    addDemand(amount) {
+      createDemand('dfac0bf9-c4af-4d45-881c-7f1849d8a8a5', amount).then((e) => console.log(e));
+    },
+  },
 };
 </script>
 
