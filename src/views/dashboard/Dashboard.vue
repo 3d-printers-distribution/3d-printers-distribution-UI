@@ -67,7 +67,6 @@ function sanitizeDemandResults(data) {
 }
 
 function sanitizeSupplyResults(data) {
-  console.log(data);
   return data
     .map((row) => ({
       id: row.id,
