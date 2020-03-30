@@ -19,7 +19,8 @@
           </div>
         <div>
           <v-btn
-            dark color="primary"
+            dark
+            color="primary"
             class="mr-4 mt-4"
             :block="$vuetify.breakpoint.smAndDown"
           >
