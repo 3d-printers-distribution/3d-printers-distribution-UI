@@ -14,7 +14,7 @@
       <v-toolbar
         flat
       >
-        <span class="title">Demand</span>
+        <span class="title">Requests</span>
       </v-toolbar>
     </template>
   </v-data-table>
