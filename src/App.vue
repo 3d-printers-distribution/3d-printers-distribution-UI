@@ -26,7 +26,7 @@
       </v-app-bar>
 
 <!--      Side Drawer-->
-      <Drawer :drawer="drawer" :user-is-logged-in="userIsLoggedIn" />
+      <Drawer :drawer="drawer" :user-is-logged-in="userIsLoggedIn" :user="user"/>
     </nav>
 
 <!--    Content-->
@@ -91,7 +91,7 @@ export default {
   components: { Drawer },
   name: 'App',
   computed: {
-    ...mapState(['userToken']),
+    ...mapState(['userToken', 'user']),
     userIsLoggedIn() {
       return !!this.$store.state.user;
     },
