@@ -37,7 +37,7 @@ export default {
   props: ['demandTablePrefs', 'handleSortBy', 'demandData'],
   methods: {
     addDemand(amount) {
-      createDemand('dfac0bf9-c4af-4d45-881c-7f1849d8a8a5', amount).then((e) => console.log(e));
+      createDemand('dfac0bf9-c4af-4d45-881c-7f1849d8a8a5', amount);
     },
   },
 };
