@@ -2,6 +2,7 @@
   <v-data-table
     :headers="demandHeaders"
     :items="demandData"
+    single-select=true
     show-select
     item-key="id"
     class="elevation-1"
