@@ -22,7 +22,7 @@
           <v-card-text>
             <div class="title">{{ person.name }}</div>
             <div class="subtitle-1">{{ person.role }}</div>
-            <div class="subtitle-2 text-uppercase">{{ person.country }}</div>
+            <div class="subtitle-2">{{ person.country }}</div>
             <div class="mt-4">
               <v-row justify="center">
                 <v-tooltip bottom>
@@ -109,7 +109,7 @@ export default {
           name: 'Apostolos Staridis',
           role: 'QA & Marketing',
           linkedin: 'https://www.linkedin.com/in/aposstar1994',
-          country: 'Greece',
+          country: 'United Kingdom',
           picture: '/pics/profile_apos_staridis.jpg',
         },
         {
@@ -125,14 +125,14 @@ export default {
           role: 'Product Design & Marketing',
           linkedin: 'https://www.linkedin.com/in/florent-bardy-345263a',
           github: 'https://github.com/Flobar42',
-          country: 'Great Britain',
+          country: 'United Kingdom',
           picture: '/pics/profile_florent_bardy.jpg',
         },
         {
           name: 'Hanna Lisa Franz',
           role: 'Front End Developer',
           github: 'https://github.com/nightbehaviour',
-          country: 'Great Britain',
+          country: 'Switzerland',
           picture: '/pics/profile_hanna_lisa_franz.jpg',
         },
         {
