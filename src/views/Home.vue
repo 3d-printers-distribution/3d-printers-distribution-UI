@@ -15,16 +15,19 @@
         <div class="d-flex flex-row flex-wrap justify-center">
           <v-btn
             dark color="primary"
-            class="mr-4 my-4"
+            class="mr-4 mt-4"
             :block="$vuetify.breakpoint.smAndDown"
           >
             Signup to contribute
           </v-btn>
-          <div class="subtitle-1 text-center">
+          <div class="subtitle-1 text-center my-4">
             Join us, if you can help as a supplier (3d-printer-owner), as a
             demanding facility (hospital, dental clinic, pharmacy,...) or as a distributor
             (volunteer, civil servant, ...).
           </div>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/xkrW_oU3lxA"
+                  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
+                  picture-in-picture" allowfullscreen></iframe>
         </div>
       </v-col>
     </v-row>
