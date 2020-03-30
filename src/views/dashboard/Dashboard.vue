@@ -30,6 +30,8 @@
           <router-view
             :demandTablePrefs="demandTablePrefs"
             :supplyTablePrefs="supplyTablePrefs"
+            :supplyData="supplyResults"
+            :demandData="demandResults"
             :handleSortBy="handleSortBy"
           />
         </v-slide-x-transition>
@@ -41,6 +43,11 @@
 <script>
 import supplyData from '../../../mocks/raw/supply';
 import demandData from '../../../mocks/raw/demand';
+
+import {
+  getConsumers,
+  // createDemand,
+} from '../../xhr/consumer';
 
 export default {
   name: 'Dashboard',
@@ -62,6 +69,17 @@ export default {
   },
   created() {
     if (this.$route.name === 'dashboard') { this.$router.replace({ name: 'supply' }); }
+
+    console.log(this.demandResults);
+    this.demandResults = [demandData[0]];
+    console.log(this.demandResults);
+
+    const consumersReq = getConsumers();
+    consumersReq.then((res) => {
+      console.log(res);
+      // this.demandResults = [demandData[0]];
+      // console.log(this.demandResults);
+    });
 
     /*
     // TODO extract this function but not sure how to do so the vue way
