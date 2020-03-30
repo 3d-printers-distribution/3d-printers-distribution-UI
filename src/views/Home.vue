@@ -1,29 +1,29 @@
 <template>
-  <v-container
-    fluid
-    class="home grey pa-md-12"
-  >
-    <v-row>
-      <img src="../assets/images/virus-outline-2.svg" alt="logo">
-      <v-col
-        align-self="center"
-        class="pa-8 ma-8"
-      >
-        <h2 class="headline pb-2">Empowering the 3D printing community to fight COVID-19!</h2>
-        <v-row align="stretch">
-          <v-col
-            cols="12"
-            md="auto"
-          >
-            <v-btn dark class="grey darken-2 text-uppercase mb-2" :to="{ name: 'signup' }">
-              Signup to contribute
-            </v-btn>
-            <div class="subtitle-1">Join us, if you can help as a supplier (3d-printer-owner), as a
-              demanding facility (hospital, dental clinic, pharmacy,...) or as a distributor
-              (volunteer, civil servant, ...).
-            </div>
-          </v-col>
-        </v-row>
+  <v-container fluid class="home-container white d-flex flex-column">
+    <!-- LOGO -->
+    <v-row class="justify-center">
+      <v-col sm="8" lg="5">
+        <div>
+          <img class="logo" alt="3DtoMeds" src="../assets/logo.jpg" />
+        </div>
+      </v-col>
+    </v-row>
+    <v-row class="justify-center">
+      <v-col class="d-flex flex-column" sm="8">
+        <h2 class="headline pb-2 text-center">
+          Empowering the 3D printing community to fight COVID-19!</h2>
+        <div class="d-flex flex-row flex-wrap justify-center">
+            <v-btn
+              dark color="primary"
+              class="mr-4 mt-4"
+              :block="$vuetify.breakpoint.smAndDown"
+            >
+              Signup to contribute</v-btn>
+          <div class="subtitle-1">Join us, if you can help as a supplier (3d-printer-owner), as a
+            demanding facility (hospital, dental clinic, pharmacy,...) or as a distributor
+            (volunteer, civil servant, ...).
+          </div>
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -43,3 +43,8 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+  .logo{
+    width: 100%;
+  }
+</style>

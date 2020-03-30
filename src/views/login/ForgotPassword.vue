@@ -29,7 +29,6 @@
         :disabled="loading"
         @keypress.enter="resetPassword"
       ></v-text-field>
-
       <!-- Password reset submit button -->
       <v-btn
         large
@@ -43,6 +42,9 @@
         {{ $t('login.form.resetPasswordBtnLabel') }}
       </v-btn>
     </v-form>
+    <v-row class="px-4 justify-center mt-4 login-links">
+      <router-link :to="{ name: 'login' }">Back to login</router-link>
+    </v-row>
   </v-container>
 </login-container>
 </template>
@@ -109,5 +111,9 @@ export default {
       border-radius:5px;
       padding: 2rem;
     }
+  }
+  .login-links a{
+    color: black;
+    text-decoration: none;
   }
 </style>
