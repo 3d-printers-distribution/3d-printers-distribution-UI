@@ -15,13 +15,14 @@
     </v-app-bar>
 
     <v-content>
-      <v-container fluid v-if="userToken">
-        <v-alert dismissible color="info">
-          <p style="font-family: monospace; word-wrap: break-word; max-width: 95vw;">
-            token: {{userToken}}
-          </p>
-        </v-alert>
-      </v-container>
+<!--      Removed for now, this is the Firebase Token-->
+<!--      <v-container fluid v-if="userToken">-->
+<!--        <v-alert dismissible color="info">-->
+<!--          <p style="font-family: monospace; word-wrap: break-word; max-width: 95vw;">-->
+<!--            token: {{userToken}}-->
+<!--          </p>-->
+<!--        </v-alert>-->
+<!--      </v-container>-->
       <router-view></router-view>
     </v-content>
 
