@@ -40,6 +40,7 @@
             :supplyData="supplyResults"
             :demandData="demandResults"
             :handleSortBy="handleSortBy"
+            :handleReset="handleReset"
           />
         </v-slide-x-transition>
       </v-col>
@@ -57,22 +58,30 @@ import {
 
 function sanitizeDemandResults(data) {
   return data
+    .filter(({ demand }) => demand && demand.length > 0)
     .map((row) => ({
       id: row.id,
+      demandId: row.demand[0].id,
+      contact: row.contactInformation,
       location: row.name,
       distanceKm: '??',
-      quantity: row.demand.reduce((acc, demand) => acc + demand.amountRemaining, 0),
+      // quantity: row.demand.reduce((acc, demand) => acc + demand.amountRemaining, 0),
+      quantity: row.demand[0].amountRemaining,
     }));
   // .filter(({ quantity }) => quantity > 0);
 }
 
 function sanitizeSupplyResults(data) {
   return data
+    .filter(({ stock }) => stock && stock.length > 0)
     .map((row) => ({
       id: row.id,
+      stockId: row.stock[0].id,
+      contact: row.contactInformation,
       location: row.name,
       distanceKm: '??',
-      quantity: row.stock.reduce((acc, demand) => acc + demand.amountRemaining, 0),
+      // quantity: row.stock.reduce((acc, supply) => acc + supply.amountRemaining, 0),
+      quantity: row.stock[0].amountRemaining,
     }));
   // .filter(({ quantity }) => quantity > 0);
 }
@@ -127,6 +136,10 @@ export default {
         default: {
           break; }
       }
+    },
+    handleReset() {
+      this.fetchProducers();
+      this.fetchConsumers();
     },
   },
   created() {

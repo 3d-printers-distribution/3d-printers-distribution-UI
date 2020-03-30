@@ -2,12 +2,13 @@
   <v-data-table
     :headers="demandHeaders"
     :items="demandData"
-    single-select=true
+    :single-select=true
     show-select
     item-key="id"
     class="elevation-1"
     :options="preferences"
     @update:options="(e) => handleSortBy('demand', e)"
+    @item-selected="(e) => handleSelection('demand', e)"
   >
     <template v-slot:top>
       <v-toolbar
@@ -31,7 +32,7 @@ export default {
       ],
     };
   },
-  props: ['preferences', 'handleSortBy', 'demandData'],
+  props: ['preferences', 'handleSortBy', 'demandData', 'handleSelection'],
 };
 </script>
 
