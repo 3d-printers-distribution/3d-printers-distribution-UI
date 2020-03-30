@@ -65,8 +65,8 @@ export default {
         email: {
           field: '',
           rules: [
-            (v) => !!v || this.$t('login.form.validation.emailRequired'), // Check if field is empty
-            (v) => /.+@.+\..+/.test(v) || this.$t('login.form.validation.emailMustBeValid'), // Use regex to crudely validate the email
+            (v) => !!v || this.$t('validation.emailRequired'), // Check if field is empty
+            (v) => /.+@.+\..+/.test(v) || this.$t('validation.emailMustBeValid'), // Use regex to crudely validate the email
           ],
         },
       },

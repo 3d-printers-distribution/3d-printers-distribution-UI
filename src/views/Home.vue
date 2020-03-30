@@ -16,7 +16,7 @@
             md="auto"
             v-for="cta in callToActions" :key="cta.title"
           >
-            <v-btn dark class="grey darken-2 text-uppercase">
+            <v-btn dark class="grey darken-2 text-uppercase" :to="cta.target">
               {{ cta.title }}</v-btn>
           </v-col>
         </v-row>
@@ -31,9 +31,9 @@ export default {
   data() {
     return {
       callToActions: [
-        { title: 'I have a 3d printer', target: 'Signup_supplier' },
-        { title: 'I need masks', target: 'Signup_demand' },
-        { title: 'I can deliver masks', target: 'Signup_distributor' },
+        { title: 'I have a 3d printer', target: { name: 'signup', query: { type: 'producer' } } },
+        { title: 'I need PPE', target: { name: 'signup', query: { type: 'consumer' } } },
+        { title: 'I can distribute PPE', target: { name: 'signup', query: { type: 'distributor' } } },
       ],
     };
   },

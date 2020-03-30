@@ -7,16 +7,16 @@
       "passwordLabel": "Password",
       "loginBtnLabel": "Login",
       "resetPasswordBtnLabel": "Reset password",
-      "createAccountBtnLabel": "Create Account",
-      "validation": {
-        "emailRequired": "Please enter your mail address.",
-        "emailMustBeValid": "This address is not valid.",
-        "passwordRequired": "Please enter a password.",
-        "fieldRequired": "Required field"
-      }
+      "createAccountBtnLabel": "Create Account"
     },
     "forgotPassword": "Forgot password",
     "backToLogin": "Back to Login",
     "passwordResetSuccess": "We have sent you a mail to reset your password."
+  },
+  "validation": {
+    "emailRequired": "Please enter your mail address.",
+    "emailMustBeValid": "This address is not valid.",
+    "passwordRequired": "Please enter a password.",
+    "fieldRequired": "Required field"
   }
 }

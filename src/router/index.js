@@ -75,13 +75,14 @@ const router = new VueRouter({
   routes,
 });
 
+// Redirect to check authentication
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
   const { user } = store.state;
 
   if (requiresAuth && !user) {
     next({ name: 'login' });
-  } else if (to.name === 'login' && user) {
+  } else if ((to.name === 'login' || to.name === 'signup') && user) {
     next({ name: 'dashboard' });
   } else {
     next();
