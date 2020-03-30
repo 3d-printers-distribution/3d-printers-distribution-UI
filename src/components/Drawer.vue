@@ -9,6 +9,12 @@
       <v-flex class="mt-5">
         <div class="subtitle-1">{{user.email}}</div>
       </v-flex>
+      <v-flex class="mt-7">
+        <div style="font-family: monospace; word-wrap: break-word;">
+          <p>token (for devs:)</p>
+          <p>{{userToken}}</p>
+        </div>
+      </v-flex>
     </v-layout>
 
 <!--    For printing out the whole user-object from the state:-->
@@ -20,7 +26,7 @@
 
 export default {
   name: 'Drawer',
-  props: ['userIsLoggedIn', 'drawer', 'user'],
+  props: ['userIsLoggedIn', 'drawer', 'user', 'userToken'],
 };
 </script>
 

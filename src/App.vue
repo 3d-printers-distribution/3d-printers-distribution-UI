@@ -26,18 +26,23 @@
       </v-app-bar>
 
 <!--      Side Drawer-->
-      <Drawer :drawer="drawer" :user-is-logged-in="userIsLoggedIn" :user="user"/>
+      <Drawer
+        :drawer="drawer"
+        :user-is-logged-in="userIsLoggedIn"
+        :user="user"
+        :user-token="userToken"
+      />
     </nav>
 
 <!--    Content-->
     <v-content>
-      <v-container fluid v-if="userToken">
-        <v-alert dismissible color="info">
-          <p style="font-family: monospace; word-wrap: break-word; max-width: 95vw;">
-            token: {{userToken}}
-          </p>
-        </v-alert>
-      </v-container>
+<!--      <v-container fluid v-if="userToken">-->
+<!--        <v-alert dismissible color="info">-->
+<!--          <p style="font-family: monospace; word-wrap: break-word; max-width: 95vw;">-->
+<!--            token: {{userToken}}-->
+<!--          </p>-->
+<!--        </v-alert>-->
+<!--      </v-container>-->
       <router-view></router-view>
     </v-content>
 
