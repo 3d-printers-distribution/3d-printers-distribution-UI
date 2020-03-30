@@ -13,13 +13,21 @@
         <h2 class="headline pb-2 text-center">
           Empowering the 3D printing community to fight COVID-19!</h2>
         <div class="d-flex flex-row flex-wrap justify-center">
-            <v-btn
-              dark color="primary"
-              class="mr-4 mt-4"
-              :block="$vuetify.breakpoint.smAndDown"
-              v-for="cta in callToActions" :key="cta.title"
-            >
-              {{ cta.title }}</v-btn>
+          <v-btn
+            dark color="primary"
+            class="mr-4 mt-4"
+            :block="$vuetify.breakpoint.smAndDown"
+          >
+            Signup to contribute
+          </v-btn>
+          <div class="subtitle-1 text-center my-4">
+            Join us, if you can help as a supplier (3d-printer-owner), as a
+            demanding facility (hospital, dental clinic, pharmacy,...) or as a distributor
+            (volunteer, civil servant, ...).
+          </div>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/xkrW_oU3lxA"
+                  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
+                  picture-in-picture" allowfullscreen></iframe>
         </div>
       </v-col>
     </v-row>
@@ -29,15 +37,6 @@
 <script>
 export default {
   name: 'Home',
-  data() {
-    return {
-      callToActions: [
-        { title: 'I have a 3d printer', target: 'Signup_supplier' },
-        { title: 'I need masks', target: 'Signup_demand' },
-        { title: 'I can deliver masks', target: 'Signup_distributor' },
-      ],
-    };
-  },
 };
 </script>
 <style lang="scss">
