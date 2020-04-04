@@ -28,6 +28,11 @@ const routes = [
     component: () => import('../views/login/Login.vue'),
   },
   {
+    path: '/myAccount',
+    name: 'myAccount',
+    component: () => import('../views/login/MyAccount.vue'),
+  },
+  {
     path: '/signup',
     name: 'signup',
     component: () => import('../views/login/SignUp.vue'),
