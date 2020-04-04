@@ -6,12 +6,28 @@
     >
       <v-toolbar-title><router-link style="text-decoration:none;color:black;"
       :to="{ name: 'home' }"> 3DtoMeds</router-link></v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn text :to="{ name: 'home' }">Home</v-btn>
-      <v-btn v-if="userIsLoggedIn" text :to="{ name: 'dashboard' }">Dashboard</v-btn>
-      <v-btn text :to="{ name: 'team' }">Team</v-btn>
-      <v-btn text :to="{ name: 'about' }">About</v-btn>
-      <v-btn text v-if="userIsLoggedIn" @click="logoutPlease">Logout</v-btn>
+      <v-tabs align-with-title>
+      <v-tab text :to="{ name: 'home' }">Home</v-tab>
+      <v-tab v-if="userIsLoggedIn" text :to="{ name: 'dashboard' }">Dashboard</v-tab>
+      <v-tab text :to="{ name: 'team' }">Team</v-tab>
+      <v-tab text :to="{ name: 'about' }">About</v-tab>
+        </v-tabs>
+      <v-menu text v-if="userIsLoggedIn">
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <v-icon>mdi-account</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item :to="{name: 'myAccount'}">
+          <v-list-item-title>My Account</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="logoutPlease">
+            <v-list-item-title>Logout</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
       <v-btn text v-else :to="{name: 'login'}">Login</v-btn>
     </v-app-bar>
 
