@@ -160,6 +160,13 @@ export default {
           picture: '/pics/profile_manuel_ramirez_lopez.jpg',
         },
         {
+          name: 'Moritz Wirth',
+          role: 'Back End Developer',
+          github: 'https://github.com/molukwi',
+          country: 'Switzerland',
+          picture: '/pics/profile_moritz_wirth.jpg',
+        },
+        {
           name: 'Paschalis Dimitriou',
           role: 'Project Leader',
           linkedin: 'https://www.linkedin.com/in/paschalis-dimitriou-57786a61',
