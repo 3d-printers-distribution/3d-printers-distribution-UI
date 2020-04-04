@@ -2,7 +2,14 @@
   <v-container class="dashboard">
     <v-card>
       <v-card-text>
-        <span class="title">Zurich, Switzerland</span>
+        <span v-if="errorStr" class="title">Zurich, Switzerland</span>
+         <span v-if="gettingLocation">
+          <i>Getting your location...</i>
+        </span>
+
+        <span v-if="address">
+          {{ address.city }}, {{ address.state }}, {{ address.country }}
+        </span>
       </v-card-text>
       <v-card-text>
         Show activity within (km):
@@ -49,12 +56,16 @@
 </template>
 
 <script>
+import axios from 'axios';
 import {
   getConsumers,
 } from '../../xhr/consumer';
 import {
   getProducers,
 } from '../../xhr/producer';
+
+const ENDPOINT = 'https://nominatim.openstreetmap.org/reverse';
+const FORMAT = 'jsonv2';
 
 function sanitizeDemandResults(data) {
   return data
@@ -117,11 +128,22 @@ export default {
         ...this.demandQuery,
         ...fields,
       };
-
       // todo: be smarter about knowing when to call each update
       // for now the only fields are location and range which affect both
       this.fetchProducers();
       this.fetchConsumers();
+    },
+    async getLocation(lat, long) {
+      const { data } = await axios.get(ENDPOINT, {
+        params: {
+          format: FORMAT,
+          lat,
+          lon: long,
+        },
+      });
+      this.gettingLocation = false;
+      this.address = data.address;
+      return data.address;
     },
     handleSortBy(table, prefs) {
       switch (table) {
@@ -142,14 +164,11 @@ export default {
       this.fetchConsumers();
     },
   },
-  created() {
+  async created() {
     if (this.$route.name === 'dashboard') {
       this.$router.replace({ name: 'supply' });
     }
 
-    /*
-    // TODO extract this function but not sure how to do so the vue way
-    // do we support geolocation
     if (!('geolocation' in navigator)) {
       this.errorStr = 'Geolocation is not available.';
       return;
@@ -157,13 +176,13 @@ export default {
 
     this.gettingLocation = true;
     // get position
-    navigator.geolocation.getCurrentPosition((pos) => {
-      // this.gettingLocation = false;
-      this.state.currentLocation = pos;
+    await navigator.geolocation.getCurrentPosition((pos) => {
+      this.location = pos;
+      this.getLocation(this.location.coords.latitude, this.location.coords.longitude);
     }, (err) => {
-      // this.gettingLocation = false;
-      // this.errorStr = err.message;
-    }); */
+      this.gettingLocation = false;
+      this.errorStr = err.message;
+    });
   },
   mounted() {
     this.fetchProducers();
@@ -183,6 +202,10 @@ export default {
         sortBy: ['distanceKm'],
       },
       operatingRadiusKm: 20,
+      location: null,
+      gettingLocation: false,
+      errorStr: null,
+      address: '',
     };
   },
 };
